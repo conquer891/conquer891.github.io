@@ -104,7 +104,7 @@ flightsJoined <- flights %>%
 ```
 The general usage for joins in dplyr are as follows:
 
-inner_join(x, y, by = c(".x", ".y"))
+inner_join(x, y, by = c(".x" = ".y"))
 
 x is your first dataset or object.
 
@@ -113,6 +113,8 @@ y is your second dataset or object that you want to join with x.
 .x is the variable name from x that you want to join with y on.
 
 .y is the variable name from y that you want to join with x on. 
+
+For more documentation, check out the documentation on [join](https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/join).
 
 Fortunately, the variable names representing carrier are the same in flights and airlines. This may not always be the case, but you can join data together using different variable names if you have to!
 
@@ -159,7 +161,7 @@ Since every row in the flights dataframe has a carrier code valued, we returned 
 
 ## Other joins
 
-SQL users will be right at home here. The joins you have in SQL are available in the dplyr package as well! 
+SQL users will be right at home here. The joins available in SQL are available in the dplyr package as well! 
 
 Let's use left_join() as an example. A left join returns all the rows of the first table, even when there is not a matching value in the second table. Rows in x without a corresponding match in y will be returned with a NA. If there are multiple matches between x and y, every combination will be returned. 
 
@@ -245,7 +247,7 @@ Our left joined dataset returned a NA for airport name for any flights that were
 Key Takeaways:
 Always check your data after an inner join to ensure you did not exclude any data! 
 
-
+Credit goes to [Dr. Elizabeth Sweeney](https://emsweene.github.io/) for providing the educational content that made this post possible.
 
 
 

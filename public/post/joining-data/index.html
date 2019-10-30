@@ -348,7 +348,7 @@ head(airlines)
 
 <p>The general usage for joins in dplyr are as follows:</p>
 
-<p>inner_join(x, y, by = c(&ldquo;.x&rdquo;, &ldquo;.y&rdquo;))</p>
+<p>inner_join(x, y, by = c(&ldquo;.x&rdquo; = &ldquo;.y&rdquo;))</p>
 
 <p>x is your first dataset or object.</p>
 
@@ -357,6 +357,8 @@ head(airlines)
 <p>.x is the variable name from x that you want to join with y on.</p>
 
 <p>.y is the variable name from y that you want to join with x on.</p>
+
+<p>For more documentation, check out the documentation on <a href="https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/join">join</a>.</p>
 
 <p>Fortunately, the variable names representing carrier are the same in flights and airlines. This may not always be the case, but you can join data together using different variable names if you have to!</p>
 
@@ -402,7 +404,7 @@ nrow(flightsJoined) #checking for the number of rows in flightsJoined
 
 <h2 id="other-joins">Other joins</h2>
 
-<p>SQL users will be right at home here. The joins you have in SQL are available in the dplyr package as well!</p>
+<p>SQL users will be right at home here. The joins available in SQL are available in the dplyr package as well!</p>
 
 <p>Let&rsquo;s use left_join() as an example. A left join returns all the rows of the first table, even when there is not a matching value in the second table. Rows in x without a corresponding match in y will be returned with a NA. If there are multiple matches between x and y, every combination will be returned.</p>
 
@@ -483,6 +485,8 @@ sum(is.na(nycDestsETLeft$name)) #total number of rows containing NA for airport 
 
 <p>Key Takeaways:
 Always check your data after an inner join to ensure you did not exclude any data!</p>
+
+<p>Credit goes to <a href="https://emsweene.github.io/">Dr. Elizabeth Sweeney</a> for providing the educational content that made this post possible.</p>
 
   
   <h4><i class="fa-share-alt" aria-hidden="true"></i>&nbsp;Share!</h4>
