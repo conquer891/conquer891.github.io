@@ -1,0 +1,58 @@
+baseurl = "/"
+languageCode = "en-us"
+title = "Ethan Chan"
+theme = "blackburn"
+author = "Ethan Chan"
+copyright = "&copy; 2019. All rights reserved."
+canonifyurls = true
+paginate = 10
+enableEmoji = true
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+[indexes]
+  tag = "tags"
+  topic = "topics"
+
+[params]
+  # Shown in the home page
+  subtitle = "Welcome to my personal website!"
+  googleAnalytics = "--"
+  # CSS name for highlight.js
+  highlightjs = "androidstudio"
+  dateFormat = "02 Jan 2006, 15:04"
+
+[menu]
+  # Shown in the side menu.
+  [[menu.main]]
+    name = "Home"
+    pre = "<i class='fa fa-home fa-fw'></i>"
+    weight = 1
+    identifier = "home"
+    url = "/"
+  [[menu.main]]
+    name = "Posts"
+    pre = "<i class='fa fa-list fa-fw'></i>"
+    weight = 2
+    identifier = "post"
+    url = "/post/"
+  [[menu.main]]
+    name = "About"
+    pre = "<i class='fa fa-user fa-fw'></i>"
+    weight = 3
+    identifier = "about"
+    url = "/about/"
+  [[menu.main]]
+    name = "Email"
+    pre = "<i class='fa fa-user fa-fw'></i>"
+    weight = 3
+    identifier = "Email"
+    url = "mailto:ecc4001@med.cornell.edu"
+[social]
+  # Link your social networking accouns to the side menu
+  # by entering your username or ID.
+  twitter = "conquer891"
+  facebook = "datprolelife"
+  instagram = "conquer891"
+  github = "conquer891"
+  linkedin = "ethan-chan-b3631849"
+

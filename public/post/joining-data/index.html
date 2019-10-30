@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.59.0" />
+
+  <title>Joining Data in R with dplyr &middot; Ethan Chan</title>
+
+    
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="mailto:ecc4001@med.cornell.edu"><i class='fa fa-user fa-fw'></i>Email</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/conquer891" rel="me" target="_blank"><i class="fab fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/datprolelife" rel="me" target="_blank"><i class="fab fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://instagram.com/conquer891" rel="me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/ethan-chan-b3631849" rel="me" target="_blank"><i class="fab fa-linkedin"></i></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/conquer891" rel="me" target="_blank"><i class="fab fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2019. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Joining Data in R with dplyr</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>29 Oct 2019, 21:13</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="/tags/r">R</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="/tags/data-wrangling">data wrangling</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="/tags/dplyr">dplyr</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This tutorial will teach you how to join different datasets together in R using the &ldquo;join&rdquo; functions of the <a href="https://www.rdocumentation.org/packages/dplyr">dplyr</a> package by Hadley Wickham.</p>
+
+<p>We will be using the nycflights13 package for this exercise, which contains airline on-time data for all flights departing NYC airports in 2013. For further documentation about this package, please see <a href="https://www.rdocumentation.org/packages/dplyr">nycflights13</a></p>
+
+<p>Let&rsquo;s begin by loading the nycflights13 package and the flights table from nycflights13.</p>
+
+<pre><code>library(nycflights13)
+names(flights) #checking for all variable names in this dataframe
+
+#  [1] &quot;year&quot;           &quot;month&quot;          &quot;day&quot;           
+#  [4] &quot;dep_time&quot;       &quot;sched_dep_time&quot; &quot;dep_delay&quot;     
+#  [7] &quot;arr_time&quot;       &quot;sched_arr_time&quot; &quot;arr_delay&quot;     
+# [10] &quot;carrier&quot;        &quot;flight&quot;         &quot;tailnum&quot;       
+# [13] &quot;origin&quot;         &quot;dest&quot;           &quot;air_time&quot;      
+# [16] &quot;distance&quot;       &quot;hour&quot;           &quot;minute&quot;        
+# [19] &quot;time_hour&quot;    
+
+head(flights) #let's take a peek into this dataframe
+
+# # A tibble: 6 x 19
+#    year month   day dep_time sched_dep_time dep_delay arr_time
+#   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
+# 1  2013     1     1      517            515         2      830
+# 2  2013     1     1      533            529         4      850
+# 3  2013     1     1      542            540         2      923
+# 4  2013     1     1      544            545        -1     1004
+# 5  2013     1     1      554            600        -6      812
+# 6  2013     1     1      554            558        -4      740
+# # ... with 12 more variables: sched_arr_time &lt;int&gt;,
+# #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
+# #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,
+# #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;
+
+str(flights) #checking the flights dataframe further
+
+# Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	336776 obs. of  19 variables:
+#  $ year          : int  2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 ...
+#  $ month         : int  1 1 1 1 1 1 1 1 1 1 ...
+#  $ day           : int  1 1 1 1 1 1 1 1 1 1 ...
+#  $ dep_time      : int  517 533 542 544 554 554 555 557 557 558 ...
+#  $ sched_dep_time: int  515 529 540 545 600 558 600 600 600 600 ...
+#  $ dep_delay     : num  2 4 2 -1 -6 -4 -5 -3 -3 -2 ...
+#  $ arr_time      : int  830 850 923 1004 812 740 913 709 838 753 ...
+#  $ sched_arr_time: int  819 830 850 1022 837 728 854 723 846 745 ...
+#  $ arr_delay     : num  11 20 33 -18 -25 12 19 -14 -8 8 ...
+#  $ carrier       : chr  &quot;UA&quot; &quot;UA&quot; &quot;AA&quot; &quot;B6&quot; ...
+#  $ flight        : int  1545 1714 1141 725 461 1696 507 5708 79 301 ...
+#  $ tailnum       : chr  &quot;N14228&quot; &quot;N24211&quot; &quot;N619AA&quot; &quot;N804JB&quot; ...
+#  $ origin        : chr  &quot;EWR&quot; &quot;LGA&quot; &quot;JFK&quot; &quot;JFK&quot; ...
+#  $ dest          : chr  &quot;IAH&quot; &quot;IAH&quot; &quot;MIA&quot; &quot;BQN&quot; ...
+#  $ air_time      : num  227 227 160 183 116 150 158 53 140 138 ...
+#  $ distance      : num  1400 1416 1089 1576 762 ...
+#  $ hour          : num  5 5 5 5 6 5 6 6 6 6 ...
+#  $ minute        : num  15 29 40 45 0 58 0 0 0 0 ...
+#  $ time_hour     : POSIXct, format: &quot;2013-01-01 05:00:00&quot; ...
+
+</code></pre>
+
+<h2 id="what-do-these-carrier-codes-mean">What do these carrier codes mean?</h2>
+
+<p>We&rsquo;ve got some nice data here about flight departures from NYC airports in 2013. What if we were interested in finding out the carrier names from our data? If you live in the United States, it is common knowledge that &ldquo;UA&rdquo; stands for United Airlines, but we want to find out what all of these carrier codes translate to! Let&rsquo;s continue further by looking into the airlines table, which contain the carrier codes and full airline names.</p>
+
+<pre><code>names(airlines)
+# [1] &quot;carrier&quot; &quot;name&quot;
+
+head(airlines)
+# # A tibble: 6 x 2
+#   carrier name                    
+#   &lt;chr&gt;   &lt;chr&gt;                   
+# 1 9E      Endeavor Air Inc.       
+# 2 AA      American Airlines Inc.  
+# 3 AS      Alaska Airlines Inc.    
+# 4 B6      JetBlue Airways         
+# 5 DL      Delta Air Lines Inc.    
+# 6 EV      ExpressJet Airlines Inc.
+
+</code></pre>
+
+<h2 id="joining-the-data">Joining the data</h2>
+
+<p>How do we combine the data from our two datasets, flights and airlines, so we can immediately identify the airline names with flight departure data? Here is where the &ldquo;join&rdquo; comes in!</p>
+
+<p>We have identified a common key across the flights and airlines dataset. The variable &ldquo;carrier&rdquo; exists in both datasets and we can join the data together using this key. Each carrier is represented by a 2-character code in both the flights and airlines dataset.</p>
+
+<p>We will be using the inner_join() function for this exerise. Let&rsquo;s create a new dataframe called &ldquo;flightsJoined&rdquo; for this join.</p>
+
+<pre><code>flightsJoined &lt;- flights %&gt;%
+  inner_join(airlines, by = c('carrier' = 'carrier'))
+</code></pre>
+
+<p>The general usage for joins in dplyr are as follows:</p>
+
+<p>inner_join(x, y, by = c(&ldquo;.x&rdquo;, &ldquo;.y&rdquo;))</p>
+
+<p>x is your first dataset or object.</p>
+
+<p>y is your second dataset or object that you want to join with x.</p>
+
+<p>.x is the variable name from x that you want to join with y on.</p>
+
+<p>.y is the variable name from y that you want to join with x on.</p>
+
+<p>Fortunately, the variable names representing carrier are the same in flights and airlines. This may not always be the case, but you can join data together using different variable names if you have to!</p>
+
+<p>Let&rsquo;s take a look at our flightsJoined dataset</p>
+
+<pre><code>flightsJoined %&gt;%
+  select(carrier, name, flight, origin, dest) #selecting a subset of variables from flightsJoined
+
+# # A tibble: 336,776 x 5
+#    carrier name                     flight origin dest 
+#    &lt;chr&gt;   &lt;chr&gt;                     &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;
+#  1 UA      United Air Lines Inc.      1545 EWR    IAH  
+#  2 UA      United Air Lines Inc.      1714 LGA    IAH  
+#  3 AA      American Airlines Inc.     1141 JFK    MIA  
+#  4 B6      JetBlue Airways             725 JFK    BQN  
+#  5 DL      Delta Air Lines Inc.        461 LGA    ATL  
+#  6 UA      United Air Lines Inc.      1696 EWR    ORD  
+#  7 B6      JetBlue Airways             507 EWR    FLL  
+#  8 EV      ExpressJet Airlines Inc.   5708 LGA    IAD  
+#  9 B6      JetBlue Airways              79 JFK    MCO  
+# 10 AA      American Airlines Inc.      301 LGA    ORD  
+# # ... with 336,766 more rows
+
+</code></pre>
+
+<p>Now we have a new dataframe named flightsJoined that contains the carrier, full airline name and departure data! This will make our data analysis much easier to decipher and interpret.</p>
+
+<p>Users of Microsoft Excel will immediately draw comparisons between an inner_join in R with a VLOOKUP (or my preferred, INDEX MATCH) in Excel. You&rsquo;re not incorrect! Both functions serve the same purpose.</p>
+
+<p>A caveat of inner_join() is that it only returns rows that have matches in the tables you&rsquo;re joining. We want to make sure that we didn&rsquo;t lose any data from our inner join. Let&rsquo;s do a double-check.</p>
+
+<pre><code>nrow(flights) #checking for the number of rows in flights
+
+# [1] 336776
+
+nrow(flightsJoined) #checking for the number of rows in flightsJoined
+
+# [1] 336776
+
+</code></pre>
+
+<p>Since every row in the flights dataframe has a carrier code valued, we returned the same number of rows in our flightsJoined dataframe. We are sure we did not lose any data in the process.</p>
+
+<h2 id="other-joins">Other joins</h2>
+
+<p>SQL users will be right at home here. The joins you have in SQL are available in the dplyr package as well!</p>
+
+<p>Let&rsquo;s use left_join() as an example. A left join returns all the rows of the first table, even when there is not a matching value in the second table. Rows in x without a corresponding match in y will be returned with a NA. If there are multiple matches between x and y, every combination will be returned.</p>
+
+<p>Let&rsquo;s compare the difference between inner_join() and left_join() next. We will be using the airports dataframe from the nycflights13 package.</p>
+
+<pre><code>head(airports) #checking rows of airports
+
+# A tibble: 6 x 8
+  faa   name                             lat   lon   alt    tz dst   tzone           
+  &lt;chr&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;           
+1 04G   Lansdowne Airport               41.1 -80.6  1044    -5 A     America/New_York
+2 06A   Moton Field Municipal Airport   32.5 -85.7   264    -6 A     America/Chicago 
+3 06C   Schaumburg Regional             42.0 -88.1   801    -6 A     America/Chicago 
+4 06N   Randall Airport                 41.4 -74.4   523    -5 A     America/New_York
+5 09J   Jekyll Island Airport           31.1 -81.4    11    -5 A     America/New_York
+6 0A9   Elizabethton Municipal Airport  36.4 -82.2  1593    -5 A     America/New_York
+</code></pre>
+
+<p>The airports dataframe contains airport information based on on the FAA code for each airport. This is very valuable information to determine the full destination airport names from flights.</p>
+
+<p>What if we were only interested in destination airports in the Eastern Time Zone? Let&rsquo;s filter the airports data to only capture airports in the Eastern Time Zone, defined by tz = -5. We&rsquo;ll create a new dataframe named airportsET</p>
+
+<pre><code>airportsET &lt;- filter(airports, tz == -5)
+
+nrow(airports) #checking rows of data in original airports dataframe
+# [1] 1458
+
+nrow(airportsET) #checking rows of data in airportsET dataframe
+# [1] 521
+</code></pre>
+
+<p>We are left with 521 rows in airportsET as compared to the 1458 rows in airports. Let&rsquo;s try an inner join and left join using airportsET and flights to illustrate the differences between the two joins. This time around, our variable names don&rsquo;t match between airportsET and flights, but that&rsquo;s okay! The &ldquo;dest&rdquo; variable in flights contains FAA codes for our destination airports. The &ldquo;faa&rdquo; variable in airports contains the same FAA codes. We can join on these two variables from flights and airports.</p>
+
+<p>We&rsquo;ll create a new dataframe named nycDestsET to capture flights departing NYC airports to Eastern Time Zone airport destinations.</p>
+
+<pre><code>nycDestsET &lt;- flights %&gt;%
+  inner_join(airportsET, by = c(&quot;dest&quot; = &quot;faa&quot;))
+  
+nrow(flights)
+# [1] 336776
+
+nrow(nycDestsET)
+# [1] 192377
+</code></pre>
+
+<p>Our inner join of Eastern Time Zone airports, airportsET, with flights only returned 192377 rows as compared to the 336776 rows in the original flights dataframe. Let&rsquo;s try out the left join! We&rsquo;ll name the left joined dataframe nycDestsETLeft</p>
+
+<pre><code>
+nycDestsETLeft &lt;- flights %&gt;%
+  left_join(airportsET, by = c(&quot;dest&quot; = &quot;faa&quot;))
+
+nrow(nycDestsETLeft) #total number of rows in nycDestsETLeft
+# [1] 336776
+
+sum(is.na(nycDestsETLeft$name)) #total number of rows containing NA for airport names
+# [1] 144399
+</code></pre>
+
+<p>Let&rsquo;s see what happened here. Our left joined dataframe, nycDestsETLeft, contains the same number of rows (336776) as the original flights dataframe. But how many airport names came back as NA in nycDestsETLeft? We counted a total of 144399 flights without a matching destination airport name.</p>
+
+<p>What could this mean? Logically, this COULD mean that the flights never made it to their destination airport. A more appropriate speculation would be that flights that were bound for non-Eastern Time Zone airports returned a NA for airport name!</p>
+
+<p>Let&rsquo;s take a closer look.</p>
+
+<pre><code>head(nycDestsETLeft %&gt;% select(flight, dep_time, arr_time, air_time, dest, name, tz))
+# A tibble: 6 x 7
+  flight dep_time arr_time air_time dest  name                               tz
+   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;                           &lt;dbl&gt;
+1   1545      517      830      227 IAH   NA                                 NA
+2   1714      533      850      227 IAH   NA                                 NA
+3   1141      542      923      160 MIA   Miami Intl                         -5
+4    725      544     1004      183 BQN   NA                                 NA
+5    461      554      812      116 ATL   Hartsfield Jackson Atlanta Intl    -5
+6   1696      554      740      150 ORD   NA                                 NA
+</code></pre>
+
+<p>Our left joined dataset returned a NA for airport name for any flights that were destined to non-Eastern Time Zone airports! We can observe the fundamental differences between a left join and inner join here.</p>
+
+<p>Key Takeaways:
+Always check your data after an inner join to ensure you did not exclude any data!</p>
+
+  
+  <h4><i class="fa-share-alt" aria-hidden="true"></i>&nbsp;Share!</h4>
+<ul class="share-buttons">
+	<li><a href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fjoining-data%2f" target="_blank" title="Share on Facebook"><i class="fa-facebook" aria-hidden="true"></i><span class="sr-only">Share on Facebook</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="https://twitter.com/intent/tweet?source=%2fpost%2fjoining-data%2f&via=HorribleGeek" target="_blank" title="Tweet"><i class="fa-twitter" aria-hidden="true"></i><span class="sr-only">Tweet</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="https://plus.google.com/share?url=%2fpost%2fjoining-data%2f" target="_blank" title="Share on Google+"><i class="fa-google-plus" aria-hidden="true"></i><span class="sr-only">Share on Google+</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="http://www.tumblr.com/share?v=3&u=%2fpost%2fjoining-data%2f" target="_blank" title="Post to Tumblr"><i class="fa-tumblr" aria-hidden="true"></i><span class="sr-only">Post to Tumblr</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="http://pinterest.com/pin/create/button/?url=%2fpost%2fjoining-data%2f" target="_blank" title="Pin it"><i class="fa-pinterest-p" aria-hidden="true"></i><span class="sr-only">Pin it</span></a>
+	</li>&nbsp;&nbsp;&nbsp;
+	<li><a href="http://www.reddit.com/submit?url=%2fpost%2fjoining-data%2f" target="_blank" title="Submit to Reddit"><i class="fa-reddit-alien" aria-hidden="true"></i><span class="sr-only">Submit to Reddit</span></a>
+	</li>
+</ul>
+
+
+<style>
+	ul.share-buttons{
+	  list-style: none;
+	  padding: 0;
+	}
+
+	ul.share-buttons li{
+	  display: inline;
+	}
+
+	ul.share-buttons .sr-only{
+	  position: absolute;
+	  clip: rect(1px 1px 1px 1px);
+	  clip: rect(1px, 1px, 1px, 1px);
+	  padding: 0;
+	  border: 0;
+	  height: 1px;
+	  width: 1px;
+	  overflow: hidden;
+	}
+</style>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="/js/ui.js"></script>
+<script src="/js/menus.js"></script>
+
+
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '--', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+
+
+<script src="/js/math-code.js"></script>
+  <script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+</body>
+</html>
+

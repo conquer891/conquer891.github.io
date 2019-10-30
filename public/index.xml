@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ethan Chan</title>
+    <link>/</link>
+    <description>Recent content on Ethan Chan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 29 Oct 2019 21:13:14 -0500</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Joining Data in R with dplyr</title>
+      <link>/post/joining-data/</link>
+      <pubDate>Tue, 29 Oct 2019 21:13:14 -0500</pubDate>
+      
+      <guid>/post/joining-data/</guid>
+      <description>Introduction This tutorial will teach you how to join different datasets together in R using the &amp;ldquo;join&amp;rdquo; functions of the dplyr package by Hadley Wickham.
+We will be using the nycflights13 package for this exercise, which contains airline on-time data for all flights departing NYC airports in 2013. For further documentation about this package, please see nycflights13
+Let&amp;rsquo;s begin by loading the nycflights13 package and the flights table from nycflights13.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>/about/</link>
+      <pubDate>Tue, 29 Oct 2019 21:13:14 -0500</pubDate>
+      
+      <guid>/about/</guid>
+      <description>I currently serve as the Pharmacy Informatics Lead at Memorial Sloan Kettering Cancer Center. I am passionate about the intersection of health care and technology to better patient outcomes.
+I received my Doctorate of Pharmacy from St. John&amp;rsquo;s University, and am currently an M.S. candidate at Cornell University.
+Proud Technite.
+My outdated resume
+Thanks for reading! Add me on LinkedIn.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/contact/</link>
+      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      <description> First Name  Last Name  E-Mail  City  State AL CA IL      Send   </description>
+    </item>
+    
+  </channel>
+</rss>
