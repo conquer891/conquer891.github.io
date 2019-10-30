@@ -13,7 +13,7 @@ tags: ["R", "data wrangling", "dplyr"]
 
 This tutorial will teach you how to join different datasets together in R using the "join" functions of the [dplyr](https://www.rdocumentation.org/packages/dplyr) package by Hadley Wickham.
 
-We will be using the nycflights13 package for this exercise, which contains airline on-time data for all flights departing NYC airports in 2013. For further documentation about this package, please see [nycflights13](https://www.rdocumentation.org/packages/nycflights13)
+We will be using the nycflights13 package for this exercise, which contains airline on-time data for all flights departing NYC airports in 2013. For further documentation about this package, please see [nycflights13](https://www.rdocumentation.org/packages/nycflights13).
 
 Let's begin by loading the nycflights13 package and the flights table from nycflights13.
 
@@ -71,7 +71,7 @@ str(flights) #checking the flights dataframe further
 ```
 ## What do these carrier codes mean?
 
-We've got some nice data here about flight departures from NYC airports in 2013. What if we were interested in finding out the carrier names from our data? If you live in the United States, it is common knowledge that "UA" stands for United Airlines, but we want to find out what all of these carrier codes translate to! Let's continue further by looking into the airlines table, which contain the carrier codes and full airline names.
+We've got some nice data here about flight departures from NYC airports in 2013. What if we were interested in finding out the carrier airline names from our data? If you live in the United States, it is common knowledge that "UA" stands for United Airlines, but we want to find out what all of these carrier codes translate to! Let's continue further by looking into the airlines table, which contain the carrier codes and full airline names.
 
 ```
 names(airlines)
