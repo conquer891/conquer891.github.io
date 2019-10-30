@@ -5,7 +5,7 @@ sidemenu: "true"
 title: About Me
 ---
 
-<img src="/./about_files/LinkedIn_Photo.jpg" alt="" width="200px" height="268px"/>
+<img src="/./about_files/LinkedIn_Photo.jpg" alt="" width="200px" height="268px"/> 
 
 I currently serve as the Pharmacy Informatics Lead at [Memorial Sloan Kettering Cancer Center](https://www.mskcc.org/). I am passionate about the intersection of health care and technology to better patient outcomes.
 

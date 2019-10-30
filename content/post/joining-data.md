@@ -96,7 +96,7 @@ How do we combine the data from our two datasets, flights and airlines, so we ca
 
 We have identified a common key across the flights and airlines dataset. The variable "carrier" exists in both datasets and we can join the data together using this key. Each carrier is represented by a 2-character code in both the flights and airlines dataset.
 
-We will be using the inner_join() function for this exerise. Let's create a new dataframe called "flightsJoined" for this join.
+We will be using the inner_join() function for this exercise. Let's create a new dataframe called "flightsJoined" for this join.
 
 ```
 flightsJoined <- flights %>%
@@ -223,7 +223,7 @@ sum(is.na(nycDestsETLeft$name)) #total number of rows containing NA for airport 
 
 Let's see what happened here. Our left joined dataframe, nycDestsETLeft, contains the same number of rows (336776) as the original flights dataframe. But how many airport names came back as NA in nycDestsETLeft? We counted a total of 144399 flights without a matching destination airport name. 
 
-What could this mean? Logically, this COULD mean that the flights never made it to their destination airport. A more appropriate speculation would be that flights that were bound for non-Eastern Time Zone airports returned a NA for airport name!
+What could this mean? Logically, this COULD mean that the flights never made it to their destination airport. A more appropriate speculation would be that flights bound for non-Eastern Time Zone airports returned a NA for airport name!
 
 Let's take a closer look.
 

@@ -1,13 +1,13 @@
 baseurl = "/"
 languageCode = "en-us"
 title = "Ethan Chan"
-theme = "blackburn"
-author = "Ethan Chan"
+theme = "blackburn" #using custom theme!
+author = "Ethan Chan" #my name as author
 copyright = "&copy; 2019. All rights reserved."
 canonifyurls = true
 paginate = 10
-enableEmoji = true
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+enableEmoji = true #In case I want to use emojis!
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"] #defining files to ignore
 
 [indexes]
   tag = "tags"
@@ -15,29 +15,29 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params]
   # Shown in the home page
-  subtitle = "Welcome to my personal website!"
+  subtitle = "Welcome to my personal website!" #subtitle of homepage
   googleAnalytics = "--"
   # CSS name for highlight.js
   highlightjs = "androidstudio"
   dateFormat = "02 Jan 2006, 15:04"
 
 [menu]
-  # Shown in the side menu.
+  # Side menu layout.
   [[menu.main]]
-    name = "Home"
-    pre = "<i class='fa fa-home fa-fw'></i>"
+    name = "Home" 
+    pre = "<i class='fa fa-home fa-fw'></i>" #defining layout of Home
     weight = 1
     identifier = "home"
     url = "/"
   [[menu.main]]
     name = "Posts"
-    pre = "<i class='fa fa-list fa-fw'></i>"
+    pre = "<i class='fa fa-list fa-fw'></i>" #list of posts
     weight = 2
     identifier = "post"
     url = "/post/"
   [[menu.main]]
     name = "About"
-    pre = "<i class='fa fa-user fa-fw'></i>"
+    pre = "<i class='fa fa-user fa-fw'></i>" #about page layout
     weight = 3
     identifier = "about"
     url = "/about/"
@@ -48,8 +48,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     identifier = "Email"
     url = "mailto:ecc4001@med.cornell.edu"
 [social]
-  # Link your social networking accouns to the side menu
-  # by entering your username or ID.
+  # Entering my social media profile IDs
   twitter = "conquer891"
   facebook = "datprolelife"
   instagram = "conquer891"
