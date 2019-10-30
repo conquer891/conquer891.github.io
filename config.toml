@@ -43,7 +43,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"] #defining files
     url = "/about/"
   [[menu.main]]
     name = "Email"
-    pre = "<i class='fa fa-user fa-fw'></i>"
+    pre = "<i class='fa fa-envelope fa-fw'></i>"
     weight = 3
     identifier = "Email"
     url = "mailto:ecc4001@med.cornell.edu"
