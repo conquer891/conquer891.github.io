@@ -114,7 +114,7 @@ y is your second dataset or object that you want to join with x.
 
 .y is the variable name from y that you want to join with x on. 
 
-For more documentation, check out the documentation on [join](https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/join).
+For more information, check out the documentation on [join](https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/join).
 
 Fortunately, the variable names representing carrier are the same in flights and airlines. This may not always be the case, but you can join data together using different variable names if you have to!
 
