@@ -1,0 +1,24 @@
+---
+title: "Chan,Ethan-Homework_4"
+author: "Ethan Chan"
+date: "10/30/2019"
+output: html_document
+---
+
+```{r}
+include=TRUE
+eval=TRUE
+echo=TRUE
+warning=FALSE
+message=FALSE
+knitr::opts_chunk$set(echo=TRUE,eval=TRUE,fig.width=10,fig.height=8)
+```
+
+# Website Address
+
+https://conquer891.netlify.com/
+
+# Github Repo
+
+https://github.com/conquer891/conquer891.github.io
+
