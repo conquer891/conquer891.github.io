@@ -13,7 +13,7 @@ tags: ["R", "data wrangling", "dplyr"]
 
 This tutorial will teach you how to join different datasets together in R using the "join" functions of the [dplyr](https://www.rdocumentation.org/packages/dplyr) package by Hadley Wickham.
 
-We will be using the nycflights13 package for this exercise, which contains airline on-time data for all flights departing NYC airports in 2013. For further documentation about this package, please see [nycflights13](https://www.rdocumentation.org/packages/dplyr)
+We will be using the nycflights13 package for this exercise, which contains airline on-time data for all flights departing NYC airports in 2013. For further documentation about this package, please see [nycflights13](https://www.rdocumentation.org/packages/nycflights13)
 
 Let's begin by loading the nycflights13 package and the flights table from nycflights13.
 
